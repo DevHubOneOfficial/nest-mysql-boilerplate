@@ -1,0 +1,17 @@
+services:
+  habit_tracker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3020:3000"
+    env_file:
+      - .env
+    volumes:
+      - ./src:/usr/src/app/src
+  mysql_db:
+    image: mysql
+    env_file:
+      - db.env
+    ports:
+      - "3307:3307"
